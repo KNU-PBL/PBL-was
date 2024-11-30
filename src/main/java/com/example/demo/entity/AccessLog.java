@@ -31,7 +31,7 @@ public class AccessLog {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(User user) { // setUser 메서드 추가
         this.user = user;
     }
 

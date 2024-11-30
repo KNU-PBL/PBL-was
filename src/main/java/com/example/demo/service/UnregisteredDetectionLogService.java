@@ -19,6 +19,11 @@ public class UnregisteredDetectionLogService {
     }
 
     public UnregisteredDetectionLog getLogById(Integer id) {
-        return repository.findById(id).orElse(null);
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Log not found with id: " + id));
+    }
+
+    public UnregisteredDetectionLog saveLog(UnregisteredDetectionLog log) {
+        return repository.save(log);
     }
 }

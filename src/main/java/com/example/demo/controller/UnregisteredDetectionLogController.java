@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.UnregisteredDetectionLogRequest;
 import com.example.demo.entity.UnregisteredDetectionLog;
 import com.example.demo.service.UnregisteredDetectionLogService;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -23,5 +25,12 @@ public class UnregisteredDetectionLogController {
     @GetMapping("/{id}")
     public UnregisteredDetectionLog getLogById(@PathVariable Integer id) {
         return service.getLogById(id);
+    }
+
+    @PostMapping
+    public UnregisteredDetectionLog createLog(@RequestBody UnregisteredDetectionLogRequest request) {
+        UnregisteredDetectionLog log = new UnregisteredDetectionLog();
+        log.setDetectionTime(request.getDetectionTime());
+        return service.saveLog(log);
     }
 }

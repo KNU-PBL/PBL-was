@@ -4,29 +4,30 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "unregistered_detection_log")
 public class UnregisteredDetectionLog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ulogId;
+    @Column(name = "ulog_id") // 테이블의 컬럼 이름에 맞게 매핑
+    private Integer id;
 
-    @Column(nullable = false)
-    private LocalDateTime detectedTime;
+    @Column(name = "detected_time", nullable = false) // 컬럼 이름 수정
+    private LocalDateTime detectionTime;
 
-    // Getters and Setters
-    public Integer getUlogId() {
-        return ulogId;
+    // Getter and Setter
+    public Integer getId() {
+        return id;
     }
 
-    public void setUlogId(Integer ulogId) {
-        this.ulogId = ulogId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public LocalDateTime getDetectedTime() {
-        return detectedTime;
+    public LocalDateTime getDetectionTime() {
+        return detectionTime;
     }
 
-    public void setDetectedTime(LocalDateTime detectedTime) {
-        this.detectedTime = detectedTime;
+    public void setDetectionTime(LocalDateTime detectionTime) {
+        this.detectionTime = detectionTime;
     }
 }
